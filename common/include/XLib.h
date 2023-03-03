@@ -1,15 +1,15 @@
-#pragma once
+//  XLib.h
+#ifndef _____XLIB_FOR_XINJECT_HEADER_____
+#define _____XLIB_FOR_XINJECT_HEADER_____
 
 #include <Windows.h>
 
-#ifdef __cplusplus
+#ifndef XLIB_MODULE_NAME
+#define XLIB_MODULE_NAME    _T("XLib")
+#endif
 
-extern "C" {
+#ifndef XLIB_HOOK_PROC
+#define XLIB_HOOK_PROC      "GetMessageProc"
+#endif
 
-BOOL WINAPI xiHook(DWORD dwThreadId);
-
-BOOL WINAPI xiUnhook();
-
-}
-
-#endif // __cplusplus
+#endif//_____XLIB_FOR_XINJECT_HEADER_____

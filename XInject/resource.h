@@ -11,6 +11,8 @@
 #define IDC_BUTTON_UNHOOK               1001
 #define IDC_BUTTON_INJECT               1002
 #define IDC_BUTTON4                     1003
+#define IDC_BUTTON_INJECT2              1003
+#define IDC_BUTTON_EJECT                1003
 #define IDC_EDIT_INJECT_PID             1004
 
 // Next default values for new objects

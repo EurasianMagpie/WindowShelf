@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Injector">
+      <UniqueIdentifier>{d5f7cf9b-19a1-4520-b6e9-338e5a090a3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="XInject.h">
@@ -33,8 +36,14 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ExplorerHookInjector.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="HookExInjector.h">
+      <Filter>Injector</Filter>
+    </ClInclude>
+    <ClInclude Include="RemoteThreadInjector.h">
+      <Filter>Injector</Filter>
+    </ClInclude>
+    <ClInclude Include="XLibHolder.h">
+      <Filter>Injector</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

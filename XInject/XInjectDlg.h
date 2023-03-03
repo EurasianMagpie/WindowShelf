@@ -3,7 +3,7 @@
 //
 
 #pragma once
-#include "ExplorerHookInjector.h"
+#include "HookExInjector.h"
 
 // CXInjectDlg dialog
 class CXInjectDlg : public CDialogEx
