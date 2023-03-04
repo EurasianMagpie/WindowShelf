@@ -9,7 +9,7 @@
 #include "../common/include/XLog.h"
 
 /*
-* 使用 HOOK API -> SetWindowsHookEx 进行 DLL 注入
+* 使用 HOOK API -> SetWindowsHookEx 进行DLL注入
 * 这个类不是线程安全的
 */
 class HookExInjector {

@@ -13,6 +13,10 @@ cmake-build-debug/
 *.suo
 *.user
 *.dll
+*.ncb
+*.opt
+*.clw
+*.aps
 _ReSharper.Caches/
 Win32-Debug/
 Win32-Release/

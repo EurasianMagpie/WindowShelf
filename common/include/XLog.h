@@ -14,39 +14,41 @@
 #include <algorithm>
 #include <tchar.h>
 
+#ifndef tstring
 #if defined(_UNICODE ) || defined(UNICODE)
-#define xlog_tstring    std::wstring
+#define tstring    std::wstring
 #else
-#define xlog_tstring    std::string
+#define tstring    std::string
+#endif
 #endif
 
 #define XLOG_MAX_LENGTH     4096
 
 class CxLog
 {
-    class IsEqualxChr
+    class IsEqual
     {
-        TCHAR   m_xchr;
+        TCHAR mChar;
     public:
-        IsEqualxChr(TCHAR xchr)
+        IsEqual(TCHAR ch)
         {
-            m_xchr = xchr;
+            mChar = ch;
         }
-        bool operator()( TCHAR & val) 
+        bool operator()(TCHAR& val) 
         {
-            return val==m_xchr;
+            return val == mChar;
         }
     };
 
     CxLog()
     {
-        m_pid = GetCurrentProcessId();
+        m_dwPid = GetCurrentProcessId();
         
-        wchar_t szModuleName[2048] = {};
-        ::GetModuleFileNameW(NULL, szModuleName, 2048);
-        if(wcslen(szModuleName))
+        TCHAR szModuleName[2048] = {};
+        ::GetModuleFileName(NULL, szModuleName, 2048);
+        if(_tcslen(szModuleName))
         {
-            xlog_tstring strFilePath = szModuleName;
+            tstring strFilePath = szModuleName;
             size_t npos = strFilePath.rfind(_T('\\'));
             m_strRunPath = strFilePath.substr(0, npos);
             m_strProcessName = strFilePath.substr(npos+1);
@@ -67,11 +69,15 @@ public:
         SYSTEMTIME systime = {};
         ::GetLocalTime(&systime);
         TCHAR szpre[256] = {};
-        _stprintf_s(szpre, _T("%04d-%02d-%02d %02d:%02d:%02d %03d [%d][%d][%s]"), systime.wYear, systime.wMonth, systime.wDay, systime.wHour, systime.wMinute, systime.wSecond, systime.wMilliseconds, m_pid, tid, m_strProcessName.c_str());
+        _stprintf_s(szpre, _T("%04d-%02d-%02d %02d:%02d:%02d %03d [%d][%d][%s]"),
+            systime.wYear, systime.wMonth, systime.wDay,
+            systime.wHour, systime.wMinute, systime.wSecond,
+            systime.wMilliseconds,
+            m_dwPid, tid, m_strProcessName.c_str());
 
-        xlog_tstring strFmt = szpre;
+        tstring strFmt = szpre;
         strFmt += lpszFmt;
-        std::replace_if(strFmt.begin(), strFmt.end(), IsEqualxChr(_T('\n')), _T(' '));
+        std::replace_if(strFmt.begin(), strFmt.end(), IsEqual(_T('\n')), _T(' '));
         strFmt += _T('\n');
         //_stprintf(m_szBuf, strFmt.c_str(), args);
         _vsntprintf_s(m_szBuf, _countof(m_szBuf), XLOG_MAX_LENGTH, strFmt.c_str(), args);
@@ -87,12 +93,12 @@ public:
     }
 
 private:
-    TCHAR           m_szBuf[XLOG_MAX_LENGTH];
-    DWORD           m_dwLogFlags;
+    TCHAR       m_szBuf[XLOG_MAX_LENGTH];
+    DWORD       m_dwLogFlags;
 
-    DWORD           m_pid;
-    xlog_tstring    m_strRunPath;
-    xlog_tstring    m_strProcessName;
+    DWORD       m_dwPid;
+    tstring     m_strRunPath;
+    tstring     m_strProcessName;
 };
 
 #define XLOG    CxLog::getInstance().Log

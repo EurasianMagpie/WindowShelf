@@ -5,7 +5,7 @@
 #include <Windows.h>
 
 #ifndef XLIB_MODULE_NAME
-#define XLIB_MODULE_NAME    _T("XLib")
+#define XLIB_MODULE_NAME    _T("XLib.dll")
 #endif
 
 #ifndef XLIB_HOOK_PROC

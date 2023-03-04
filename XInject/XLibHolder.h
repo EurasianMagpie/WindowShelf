@@ -1,7 +1,16 @@
 #pragma once
 
 #include <Windows.h>
+#include <string>
 #include "../common/include/XLib.h"
+
+#ifndef tstring
+#if defined(_UNICODE ) || defined(UNICODE)
+#define tstring    std::wstring
+#else
+#define tstring    std::string
+#endif
+#endif
 
 /*
 * 管理 XLib.dll 的工具类
@@ -22,13 +31,29 @@ public:
 
     HMODULE GetModule() {
         if (!mhModule) {
-            mhModule = ::LoadLibrary(XLIB_MODULE_NAME);
+            mhModule = ::LoadLibrary(GetFilePath());
         }
         return mhModule;
     }
 
     HOOKPROC GetHookProc() {
         return (HOOKPROC)GetProcAddress(GetModule(), XLIB_HOOK_PROC);
+    }
+
+    LPCTSTR GetFilePath() {
+        if (mModuleFilePath.size() == 0) {
+            TCHAR szModuleName[2048] = {};
+            ::GetModuleFileName(NULL, szModuleName, 2048);
+            if (_tcslen(szModuleName))
+            {
+                tstring strFilePath = szModuleName;
+                size_t npos = strFilePath.rfind(_T('\\'));
+                mModuleFilePath = strFilePath.substr(0, npos);
+                mModuleFilePath.append(_T("\\"));
+                mModuleFilePath.append(XLIB_MODULE_NAME);
+            }
+        }
+        return mModuleFilePath.c_str();
     }
 
 private:
@@ -40,6 +65,7 @@ private:
     }
 
 private:
+    tstring mModuleFilePath;
     HMODULE mhModule;
 };
 

@@ -51,7 +51,8 @@ END_MESSAGE_MAP()
 
 
 CXInjectDlg::CXInjectDlg(CWnd* pParent /*=nullptr*/)
-	: CDialogEx(IDD_XINJECT_DIALOG, pParent)
+	: CDialogEx(IDD_XINJECT_DIALOG, pParent),
+	mRemoteThreadInjector(theXLibHolder.GetFilePath())
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -69,6 +70,7 @@ BEGIN_MESSAGE_MAP(CXInjectDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_HOOK, &CXInjectDlg::OnClickedButtonHook)
 	ON_BN_CLICKED(IDC_BUTTON_UNHOOK, &CXInjectDlg::OnClickedButtonUnhook)
 	ON_BN_CLICKED(IDC_BUTTON_INJECT, &CXInjectDlg::OnClickedButtonInject)
+	ON_BN_CLICKED(IDC_BUTTON_EJECT, &CXInjectDlg::OnClickedButtonEject)
 END_MESSAGE_MAP()
 
 
@@ -172,5 +174,17 @@ void CXInjectDlg::OnClickedButtonUnhook()
 
 void CXInjectDlg::OnClickedButtonInject()
 {
-	// TODO: Add your control notification handler code here
+	CString text;
+	mInjectPidEdit.GetWindowText(text);
+	int pid = _ttoi(text);
+	mRemoteThreadInjector.Inject(pid);
+}
+
+
+void CXInjectDlg::OnClickedButtonEject()
+{
+	CString text;
+	mInjectPidEdit.GetWindowText(text);
+	int pid = _ttoi(text);
+	mRemoteThreadInjector.Eject(pid);
 }

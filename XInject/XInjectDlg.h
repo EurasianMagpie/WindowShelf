@@ -4,6 +4,7 @@
 
 #pragma once
 #include "HookExInjector.h"
+#include "RemoteThreadInjector.h"
 
 // CXInjectDlg dialog
 class CXInjectDlg : public CDialogEx
@@ -22,6 +23,7 @@ public:
 
 private:
 	ExplorerHookInjector mExplorerHookInjector;
+	RemoteThreadInjector mRemoteThreadInjector;
 
 // Implementation
 protected:
@@ -37,5 +39,6 @@ public:
 	afx_msg void OnClickedButtonHook();
 	afx_msg void OnClickedButtonUnhook();
 	afx_msg void OnClickedButtonInject();
+	afx_msg void OnClickedButtonEject();
 	CEdit mInjectPidEdit;
 };
