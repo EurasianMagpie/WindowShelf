@@ -5,8 +5,13 @@
 #include <tchar.h>
 #include <XLog.h>
 
-namespace ImageWalker {
-    VOID WINAPI Walk(HINSTANCE hInstDll) {
+class ImageWalker {
+public:
+    /*
+    * 遍历当前地址空间中载入的Image文件
+    * 忽略当前模块 hCurrentModule 所属Image文件
+    */
+    static VOID WINAPI Walk(HINSTANCE hCurrentModule) {
         PBYTE pb = NULL;
         MEMORY_BASIC_INFORMATION mbi;
         XLOG(_T("Image | Walker - Begin ---------------------------"));
@@ -16,12 +21,12 @@ namespace ImageWalker {
             if (mbi.State == MEM_FREE) {
                 mbi.AllocationBase = mbi.BaseAddress;
             }
-            
-            if ((mbi.AllocationBase == hInstDll)
+
+            if ((mbi.AllocationBase == hCurrentModule)
                 || (mbi.AllocationBase != mbi.BaseAddress)
                 || (mbi.AllocationBase == NULL)) {
                 // 这些情况忽略：
-                //  1. region属于当前的DLL
+                //  1. region属于当前的模块
                 //  2. 当前block不是region的起始block
                 //  3. 地址为空
                 nLen = 0;
@@ -37,4 +42,4 @@ namespace ImageWalker {
         }
         XLOG(_T("Image | Walker - End -----------------------------"));
     }
-}
+};
