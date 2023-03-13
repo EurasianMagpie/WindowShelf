@@ -4,7 +4,9 @@
 #ifndef ENABLE_XLOG
 #define ENABLE_XLOG
 #endif
-#include "../common/include/XLog.h"
+#include <XLog.h>
+#include "ImageWalker.h"
+#include "APIHook.h"
 
 HHOOK g_hHook = NULL;
 HMODULE g_hModule = NULL;
@@ -19,6 +21,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     case DLL_PROCESS_ATTACH:
         g_hModule = hModule;
         XLOG(_T("XLIB | DLL_PROCESS_ATTACH"));
+        ImageWalker::Walk(hModule);
         break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
@@ -35,7 +38,7 @@ extern "C" {
 #endif
 
 LRESULT WINAPI GetMessageProc(int nCode, WPARAM wParam, LPARAM lParam) {
-    XLOG(_T("XLIB | GetMessageProc nCode:%d WPARAM:0x%X LPARAM:0x%X"), nCode);
+    XLOG(_T("XLIB | GetMessageProc nCode:%d WPARAM:0x%p LPARAM:0x%p"), nCode);
     return CallNextHookEx(g_hHook, nCode, wParam, lParam);
 }
 

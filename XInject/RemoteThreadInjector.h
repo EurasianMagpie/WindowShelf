@@ -9,7 +9,7 @@
 #include <string>
 #include <set>
 #define ENABLE_XLOG
-#include "../common/include/XLog.h"
+#include <XLog.h>
 
 #ifdef UNICODE
 #define InjectLib  RemoteThreadUtil::InjectLibW

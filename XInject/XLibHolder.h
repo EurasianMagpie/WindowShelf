@@ -2,7 +2,7 @@
 
 #include <Windows.h>
 #include <string>
-#include "../common/include/XLib.h"
+#include <XLib.h>
 
 #ifndef tstring
 #if defined(_UNICODE ) || defined(UNICODE)

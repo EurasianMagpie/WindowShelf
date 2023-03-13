@@ -6,7 +6,7 @@
 #include <map>
 #include "XLibHolder.h"
 #define ENABLE_XLOG
-#include "../common/include/XLog.h"
+#include <XLog.h>
 
 /*
 * 使用 HOOK API -> SetWindowsHookEx 进行DLL注入
