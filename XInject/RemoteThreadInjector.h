@@ -35,7 +35,7 @@ static BOOL InjectLibW(DWORD dwProcessId, PCWSTR pszLibFile) {
     HANDLE hThread = NULL;
     PWSTR pszLibFileRemote = NULL;
 
-    XLOG(_T("XINJECT | RemoteThreadUtil::InjectLibW | dwProcessId:%d  libFile:%s"), dwProcessId, pszLibFile);
+    XLOGW(L"XINJECT | RemoteThreadUtil::InjectLibW | dwProcessId:%d  libFile:%s", dwProcessId, pszLibFile);
     __try {
         // 按照预期的权限，获取目标进程的HANDLE
         hProcess = OpenProcess(
@@ -121,7 +121,7 @@ static BOOL EjectLibW(DWORD dwProcessId, PCWSTR pszLibFile) {
     HANDLE hProcess = NULL;
     HANDLE hThread = NULL;
 
-    XLOG(_T("XINJECT | RemoteThreadUtil::EjectLibW | dwProcessId:%d  libFile:%s"), dwProcessId, pszLibFile);
+    XLOGW(L"XINJECT | RemoteThreadUtil::EjectLibW | dwProcessId:%d  libFile:%s", dwProcessId, pszLibFile);
     __try {
         // 获取目标进程的包含模块信息的快照
         hthSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE, dwProcessId);

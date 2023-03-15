@@ -7,6 +7,7 @@
 #include <XLog.h>
 #include "ImageWalker.h"
 #include "APIHook.h"
+#include "HookMessageBox.h"
 
 HHOOK g_hHook = NULL;
 HMODULE g_hModule = NULL;
@@ -23,11 +24,11 @@ BOOL APIENTRY DllMain( HMODULE hModule,
         XLOG(_T("XLIB | DLL_PROCESS_ATTACH"));
         ImageWalker::Walk(hModule);
         break;
-    case DLL_THREAD_ATTACH:
-    case DLL_THREAD_DETACH:
-        break;
     case DLL_PROCESS_DETACH:
         XLOG(_T("XLIB | DLL_PROCESS_DETACH"));
+        break;
+    case DLL_THREAD_ATTACH:
+    case DLL_THREAD_DETACH:
         break;
     }
     return TRUE;

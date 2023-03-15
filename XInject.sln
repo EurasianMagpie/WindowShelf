@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XLib", "XLib\XLib.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XInject", "XInject\XInject.vcxproj", "{0750E634-8DBD-4B68-A1FC-47462C9336DE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HookMe", "HookMe\HookMe.vcxproj", "{003AC479-8E7F-4E52-9A84-56C04E1F6798}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{0750E634-8DBD-4B68-A1FC-47462C9336DE}.Release|x64.Build.0 = Release|x64
 		{0750E634-8DBD-4B68-A1FC-47462C9336DE}.Release|x86.ActiveCfg = Release|Win32
 		{0750E634-8DBD-4B68-A1FC-47462C9336DE}.Release|x86.Build.0 = Release|Win32
+		{003AC479-8E7F-4E52-9A84-56C04E1F6798}.Debug|x64.ActiveCfg = Debug|x64
+		{003AC479-8E7F-4E52-9A84-56C04E1F6798}.Debug|x64.Build.0 = Debug|x64
+		{003AC479-8E7F-4E52-9A84-56C04E1F6798}.Debug|x86.ActiveCfg = Debug|Win32
+		{003AC479-8E7F-4E52-9A84-56C04E1F6798}.Debug|x86.Build.0 = Debug|Win32
+		{003AC479-8E7F-4E52-9A84-56C04E1F6798}.Release|x64.ActiveCfg = Release|x64
+		{003AC479-8E7F-4E52-9A84-56C04E1F6798}.Release|x64.Build.0 = Release|x64
+		{003AC479-8E7F-4E52-9A84-56C04E1F6798}.Release|x86.ActiveCfg = Release|Win32
+		{003AC479-8E7F-4E52-9A84-56C04E1F6798}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

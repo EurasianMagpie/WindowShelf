@@ -13,35 +13,32 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ApiHook">
-      <UniqueIdentifier>{c00d7d44-e577-468f-86be-25f30085cefd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ImageWalker">
-      <UniqueIdentifier>{27987cce-42cf-4453-9e8c-862724fae9f5}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HookMe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HookMeDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="APIHook.h">
-      <Filter>ApiHook</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageWalker.h">
-      <Filter>ImageWalker</Filter>
-    </ClInclude>
-    <ClInclude Include="HookMessageBox.h">
-      <Filter>ApiHook</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dllmain.cpp">
+    <ClCompile Include="HookMe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HookMeDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
@@ -49,13 +46,18 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="xLib.def">
-      <Filter>Source Files</Filter>
+    <ResourceCompile Include="HookMe.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\HookMe.rc2">
+      <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="XLib.rc">
+    <Image Include="res\HookMe.ico">
       <Filter>Resource Files</Filter>
-    </ResourceCompile>
+    </Image>
   </ItemGroup>
 </Project>
