@@ -59,6 +59,7 @@ public:
 
     ~APIHook() {
         // 从当前已加载的所有模块中撤销对当前函数的Hook
+        // 即，把所有被替换的函数地址替换为原地址
         ReplaceIATEntryInAllMods(m_pszCalleeModName, m_pfnHook, m_pfnOrig);
 
         // 从链表中移除当前对象
