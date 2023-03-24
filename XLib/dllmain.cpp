@@ -39,7 +39,7 @@ extern "C" {
 #endif
 
 LRESULT WINAPI GetMessageProc(int nCode, WPARAM wParam, LPARAM lParam) {
-    XLOG(_T("XLIB | GetMessageProc nCode:%d WPARAM:0x%p LPARAM:0x%p"), nCode);
+    XLOG(_T("XLIB | GetMessageProc nCode:%d WPARAM:0x%p LPARAM:0x%p"), nCode, wParam, lParam);
     return CallNextHookEx(g_hHook, nCode, wParam, lParam);
 }
 
