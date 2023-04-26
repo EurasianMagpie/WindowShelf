@@ -100,8 +100,8 @@ public:
         DWORD tid = GetCurrentThreadId();
         SYSTEMTIME systime = {};
         ::GetLocalTime(&systime);
-        TCHAR szpre[256] = {};
-        wprintf_s(szpre, L"%04d-%02d-%02d %02d:%02d:%02d %03d [%d][%d][%s]",
+        WCHAR szpre[256] = {};
+        swprintf_s(szpre, L"%04d-%02d-%02d %02d:%02d:%02d %03d [%d][%d][%s]",
             systime.wYear, systime.wMonth, systime.wDay,
             systime.wHour, systime.wMinute, systime.wSecond,
             systime.wMilliseconds,
